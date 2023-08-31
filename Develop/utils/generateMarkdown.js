@@ -6,10 +6,10 @@ function renderLicenseBadge(license) {
   return '';
 }
 
-// function that returns the license link
+// function that returns the license link in the table of contents
 function renderLicenseLink(license) {
   if (license) {
-    return `[License](#${license.toLowerCase()})`;
+    return `[License](#${license})`;
   }
   return '';
 }
@@ -18,7 +18,7 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   if (license) {
     return `## License
-      This application is licensed under the [${license} license](#${license.toLowerCase()}).`;
+  This application is licensed under the ${license} license`;
   }
   return '';
 }
@@ -37,7 +37,7 @@ ${licenseBadge}
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
-${licenseLink}
+* ${licenseLink}
 * [Tests](#tests)
 * [Questions](#questions)
 
