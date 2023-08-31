@@ -1,50 +1,66 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+// function that returns a license badge based on which license is passed in
+function renderLicenseBadge(license) {
+  if (license) {
+    return `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`;
+  }
+  return '';
+}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// function that returns the license link
+function renderLicenseLink(license) {
+  if (license) {
+    return `[License](#${license.toLowerCase()})`;
+  }
+  return '';
+}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// function that returns the license section of README
+function renderLicenseSection(license) {
+  if (license) {
+    return `## License
+      This application is licensed under the [${license} license](#${license.toLowerCase()}).`;
+  }
+  return '';
+}
 
 // function to generate markdown for README
 const generateMarkdown = data => {
+  const licenseBadge = renderLicenseBadge(data.license);
+  const licenseLink = renderLicenseLink(data.license);
+  const licenseSection = renderLicenseSection(data.license);
+
   return `# ${data.title}
-  ![Github license](http://img.shields.io/badge/license-${data.license}-blue.svg)
+${licenseBadge}
 
-  ## Table of Contents
-  * [Description](#description)
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Contributing](#contribution)
-  * [License](#license)
-  * [Tests](#tests)
-  * [Questions](#questions)
-  
-  ## Description 
-  ${data.description}
-  
-  ## Installation 
-  ${data.install}
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+${licenseLink}
+* [Tests](#tests)
+* [Questions](#questions)
 
-  ## Usage 
-  ${data.usage}
+## Description 
+${data.description}
 
-  ## Contributing 
-  ${data.contributing}
+## Installation 
+${data.install}
 
-  ## Tests
-  ${data.test}
+## Usage 
+${data.usage}
 
-  ## License 
-  This application is licensed under the ${data.license} license.
+## Contributing 
+${data.contributing}
 
-  ## Questions
-  If you have any questions, feel free to contact ${data.email}. You can view more projects at https://github.com/${data.github}.
+${licenseSection}
+
+## Tests
+${data.test}
+
+## Questions
+If you have any questions, feel free to contact ${data.email}. You can view more projects at [https://github.com/${data.github}](https://github.com/${data.github}).
 `;
-}
+};
 
 module.exports = generateMarkdown;
